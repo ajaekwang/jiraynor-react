@@ -43,10 +43,9 @@ export default function SignIn(props: Props) {
     expires.setMilliseconds(expires.getMilliseconds() + exprTime);
     
     setCookies("token", token, { expires });
-    
-    console.log("여기1", user);
+  
     setUser(userEntity);
-    console.log("여기2", user);
+    
   };
   return (
     <Card sx={{ minWidth: 275, maxWidth: "50vw", padding: 5 }}>

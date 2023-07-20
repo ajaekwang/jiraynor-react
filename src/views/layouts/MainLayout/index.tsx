@@ -10,8 +10,7 @@ export default function MainLayout() {
   const [boardResponse, setBoardResponse] = useState<string>("");
   const [cookies] = useCookies();
   const { user } = useUserStore();
-  
-  console.log(user);
+  //const { testData, setTestData } = useState<string>("");
 
   const getBoard = async (token: string) => {
     const requestOption = {
@@ -21,11 +20,12 @@ export default function MainLayout() {
     };
 
     await axios
-      .get("http://localhost:4000/api/board/", requestOption)
+      .get("http://3.35.167.70:4040/api/board/list", requestOption)
       .then((response) => {
         setBoardResponse(response.data);
+        
       })
-      .catch((error) => "");
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function MainLayout() {
   return (
     <>
       <Navigation />
-      {user? <BoardMain /> : <Authentication />}
+      {user ? <BoardMain /> : <Authentication />}
     </>
   );
 }
